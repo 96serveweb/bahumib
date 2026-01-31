@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="logo.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bahumi Build | Trusted Construction Partner in South Africa</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #0A2463;
+            --secondary: #D4AF37;
+            --accent: #C8102E;
+            --dark: #1A1A1A;
+            --light: #F8F9FA;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+        
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.5rem 0;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled {
+            padding: 0.8rem 0;
+        }
+        
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-weight: 800;
+        }
+        
+        .logo-img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+        
+        .header.scrolled .logo-img {
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+        
+        .logo-text span {
+            color: var(--secondary);
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary) !important;
+        }
+        
+        .home-section {
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            background: var(--dark);
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .swiper-slide {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slide-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            filter: brightness(0.7);
+            transform: scale(1.1);
+            transition: transform 8s ease;
+        }
+        
+        .swiper-slide-active .slide-bg {
+            transform: scale(1);
+        }
+        
+        .slide-content {
+            position: relative;
+            z-index: 10;
+            color: white;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+
+/* TEXT ANIMATIONS */
+.text-animation-container {
+    margin-top: 120px;
+    position: relative;
+    overflow: hidden;
+    padding: 0 1rem;
+    margin-left: -200px;
+}
+
+.animated-badge {
+    display: inline-block;
+    background: var(--primary);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 30px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: translateY(30px);
+    font-size: 0.9rem;
+}
+
+.title-line {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.title-word {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    font-size: clamp(2.2rem, 4vw, 4rem);
+    font-weight: 800;
+    line-height: 1.3;
+    margin-right: 0.4rem;
+}
+
+.title-word.highlight {
+    color: var(--secondary);
+    position: relative;
+}
+
+.title-word.highlight::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 8px;
+    background: var(--secondary);
+    opacity: 0.3;
+    z-index: -1;
+}
+
+.text-line {
+    display: block;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.text-word {
+    display: inline-block;
+    transform: translateY(100%);
+    opacity: 0;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-weight: 300;
+    margin-right: 0.3rem;
+}
+
+.cta-container {
+    margin-top: 2rem;
+    opacity: 0;
+    transform: translateY(30px);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.btn-primary {
+    background: var(--secondary);
+    color: var(--dark);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+    border: 2px solid var(--secondary);
+    min-width: 180px;
+    font-size: 0.95rem;
+}
+
+.btn-primary:hover {
+    background: transparent;
+    color: var(--secondary);
+    transform: translateY(-3px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease;
+    min-width: 180px;
+    font-size: 0.95rem;
+}
+
+.btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: translateY(-3px);
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+    .home-section {
+        height: 90vh;
+        min-height: 600px;
+    }
+    
+    .text-animation-container {
+        margin-top: 80px;
+        padding: 0 1rem;
+        margin-left: -5px;
+    }
+    
+    .animated-badge {
+        padding: 0.4rem 1.2rem;
+        font-size: 0.8rem;
+        margin-bottom: 1.2rem;
+    }
+    
+    .title-word {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+        margin-right: 0.3rem;
+    }
+    
+    .title-line {
+        margin-bottom: 0.3rem;
+    }
+    
+    .text-word {
+        font-size: clamp(0.9rem, 3vw, 1.1rem);
+        margin-right: 0.2rem;
+    }
+    
+    .text-line {
+        margin-bottom: 0.3rem;
+    }
+    
+    .cta-container {
+        margin-top: 1.5rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 280px;
+        padding: 0.8rem 1.5rem;
+        margin-right: 0;
+        font-size: 0.9rem;
+    }
+    
+    .slide-content {
+        padding: 0 1rem;
+    }
+    
+    .text-line:nth-child(n+5) {
+        display: none;
+    }
+}
+
+@media (max-width: 576px) {
+    .home-section {
+        height: 85vh;
+        min-height: 550px;
+    }
+    
+    .text-animation-container {
+        margin-top: 100px;
+    }
+
+    .text-animation-container {
+    position: relative;
+    overflow: hidden;
+    padding: 0 1rem;
+    margin-left: -5px;
+}
+
+    
+    .title-word {
+        font-size: clamp(1.6rem, 6vw, 2rem);
+    }
+    
+    .text-word {
+        font-size: 0.9rem;
+    }
+    
+    .animated-badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        max-width: 250px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.85rem;
+    }
+    
+    .cta-container {
+        gap: 0.6rem;
+    }
+    
+    .text-line:nth-child(n+4) {
+        display: none;
+    }
+}
+
+/* Tablet adjustments */
+@media (min-width: 577px) and (max-width: 768px) {
+    .cta-container {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: auto;
+        min-width: 160px;
+    }
+}
+
+/* Large Mobile Devices */
+@media (min-width: 769px) and (max-width: 992px) {
+    .text-animation-container {
+        margin-top: 90px;
+    }
+    
+    .title-word {
+        font-size: clamp(2rem, 4vw, 3rem);
+    }
+    
+    .text-word {
+        font-size: 1.1rem;
+    }
+    
+    .cta-container {
+        gap: 0.8rem;
+    }
+}
+
+/* landscape mobile */
+@media (max-height: 600px) and (orientation: landscape) {
+    .home-section {
+        height: auto;
+        min-height: 100vh;
+    }
+    
+    .text-animation-container {
+        margin-top: 70px;
+        padding-bottom: 2rem;
+    }
+    
+    .cta-container {
+        margin-top: 1rem;
+    }
+    
+    .title-line {
+        margin-bottom: 0.2rem;
+    }
+    
+    .text-line {
+        margin-bottom: 0.2rem;
+    }
+    
+    .text-line:nth-child(n+4) {
+        display: none;
+    }
+}
+        
+        
+        /* FORM SECTION STYLE */
+        .form-section {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f9f9f9 0%, #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .form-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: var(--primary);
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            position: relative;
+        }
+        
+        .section-subtitle {
+            color: var(--accent);
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        
+        .contact-form-container {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .contact-form-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--primary);
+            clip-path: polygon(100% 0, 0 0, 100% 100%);
+            opacity: 0.05;
+        }
+        
+        .contact-form-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--secondary);
+            clip-path: polygon(0 100%, 100% 100%, 0 0);
+            opacity: 0.05;
+        }
+        
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .form-label i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+        
+        .form-control {
+            padding: 0.9rem 1rem;
+            border: 1px solid #e1e5eb;
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+        
+        .form-control:focus {
+            border-color: var(--secondary);
+            outline: none;
+        }
+        
+        /* Form Validation Styles */
+        .form-control.is-valid {
+            border-color: #28a745;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+            padding-right: 2.5rem;
+        }
+        
+        .form-control.is-invalid {
+            border-color: #dc3545;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right calc(0.375em + 0.1875rem) center;
+            background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+            padding-right: 2.5rem;
+        }
+        
+        .valid-feedback, .invalid-feedback {
+            display: none;
+            width: 100%;
+            margin-top: -1rem;
+            margin-bottom: 1rem;
+            font-size: 0.875em;
+        }
+        
+        .valid-feedback {
+            color: #28a745;
+        }
+        
+        .invalid-feedback {
+            color: #dc3545;
+        }
+        
+        .was-validated .form-control:invalid ~ .invalid-feedback,
+        .was-validated .form-control:valid ~ .valid-feedback {
+            display: block;
+        }
+        
+        .form-group {
+            position: relative;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary) 0%, #0c2d7a 100%);
+            color: white;
+            border: none;
+            padding: 1.1rem 2.5rem;
+            border-radius: 8px;
+            font-weight: 700;
+            width: 100%;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .submit-btn:hover::after {
+            left: 100%;
+        }
+        
+        .submit-btn:hover {
+            background: linear-gradient(135deg, var(--secondary) 0%, #e0c05c 100%);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+        
+        /* Form Success/Error Messages */
+        .alert {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Modern Contact Info Cards */
+        .contact-info {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid var(--secondary);
+            transition: transform 0.3s ease;
+            height: calc(50% - 0.75rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .info-card:nth-child(odd) {
+            border-left-color: var(--primary);
+        }
+        
+        .info-card-title {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-card-title i {
+            background: rgba(10, 36, 99, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            color: var(--primary);
+        }
+        
+        .info-card-text {
+            color: var(--gray);
+            margin-bottom: 0;
+            line-height: 1.7;
+        }
+        
+        /* Footer Styles */
+.footer {
+    background: var(--primary);
+    color: white;
+    padding: 3rem 0 1.5rem;
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.footer-logo {
+    height: 50px;
+    margin-right: 15px;
+}
+
+.footer-brand-text {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+    margin: 0;
+}
+
+.footer-brand-text span {
+    color: var(--secondary);
+}
+
+.footer-description {
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
+
+.footer-heading {
+    font-size: 1.1rem;
+    color: white;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.5rem;
+    position: relative;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--secondary);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 0.6rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+    color: var(--secondary);
+    padding-left: 5px;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.95rem;
+}
+
+.contact-item i {
+    color: var(--secondary);
+    width: 16px;
+    margin-top: 3px;
+}
+
+.footer-services {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-services li {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.6rem;
+    font-size: 0.95rem;
+    position: relative;
+    padding-left: 15px;
+}
+
+.footer-services li::before {
+    content: '›';
+    color: var(--secondary);
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.social-links {
+    display: flex;
+    gap: 0.7rem;
+    margin-top: 1rem;
+}
+
+.social-link {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.social-link:hover {
+    background: var(--secondary);
+    color: var(--dark);
+    transform: translateY(-3px);
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+}
+
+.copyright p {
+    margin-bottom: 0.3rem;
+}
+
+.text-sm {
+    font-size: 0.8rem;
+}
+
+/* Responsive Design for Footer */
+@media (max-width: 768px) {
+    .footer {
+        text-align: center;
+        padding: 2.5rem 0 1rem;
+    }
+    
+    .footer-heading::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-brand {
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-logo {
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .footer-description {
+        max-width: 100%;
+    }
+    
+    .footer-links a:hover {
+        padding-left: 0;
+    }
+    
+    .contact-item {
+        justify-content: center;
+    }
+    
+    .footer-services li {
+        padding-left: 0;
+    }
+    
+    .footer-services li::before {
+        display: none;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer-brand-text {
+        font-size: 1.5rem;
+    }
+    
+    .footer-logo {
+        height: 40px;
+    }
+    
+    .copyright {
+        font-size: 0.8rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand" href="#">
+                    <img src="/assets/images/logo.png" alt="Bahumi Build Logo" class="logo-img">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#home">Home</a>
+                        </li>
+        
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section id="home" class="home-section">
+        <div class="swiper home-slider">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('/assets/images/01.jpg')"></div>
+                    <div class="slide-content">
+                        <div class="text-animation-container">
+                            <div class="animated-badge">BUILDING EXCELLENCE SINCE 2005</div>
+                            
+                            <div class="title-line">
+                                <span class="title-word">Transforming</span>
+                                <span class="title-word highlight">South</span>
+                                <span class="title-word highlight">Africa</span>
+                            </div>
+                            <div class="title-line">
+                                <span class="title-word">Through</span>
+                                <span class="title-word">Construction</span>
+                                <span class="title-word">Excellence</span>
+                            </div>
+                            
+                            <div class="text-line">
+                                <span class="text-word">construction</span>
+                                <span class="text-word">solutions</span>
+                                <span class="text-word">that</span>
+                                <span class="text-word">transform</span>
+                                <span class="text-word">communities</span>
+                            </div>
+                            <div class="text-line">
+                                <span class="text-word">and</span>
+                                <span class="text-word">create</span>
+                                <span class="text-word">lasting</span>
+                                <span class="text-word">value</span>
+                                <span class="text-word">nationwide.</span>
+                            </div>
+                            
+                           <div class="cta-container">
+                                <a href="#contact" class="btn-primary">Get a Quote</a>
+                                <a href="#contact" class="btn-secondary">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('/assets/images/03.jpg')"></div>
+                    <div class="slide-content">
+                        <div class="text-animation-container">
+                            <div class="animated-badge">INNOVATION IN CONSTRUCTION</div>
+                            
+                            <div class="title-line">
+                                <span class="title-word">Precision</span>
+                                <span class="title-word">Engineering</span>
+                            </div>
+                            <div class="title-line">
+                                <span class="title-word">For</span>
+                                <span class="title-word highlight">Sustainable</span>
+                                <span class="title-word">Development</span>
+                            </div>
+                            
+                            <div class="text-line">
+                                <span class="text-word">From</span>
+                                <span class="text-word">conceptual</span>
+                                <span class="text-word">design</span>
+                                <span class="text-word">to</span>
+                                <span class="text-word">final</span>
+                                <span class="text-word">completion,</span>
+                            </div>
+                            <div class="text-line">
+                                <span class="text-word">we</span>
+                                <span class="text-word">combine</span>
+                                <span class="text-word">cutting-edge</span>
+                                <span class="text-word">technology</span>
+                            </div>
+                            <div class="text-line">
+                                <span class="text-word">with</span>
+                                <span class="text-word">proven</span>
+                                <span class="text-word">construction</span>
+                                <span class="text-word">expertise.</span>
+                            </div>
+                            
+                            <div class="cta-container">
+                                <a href="#contact" class="btn-primary">Get a Quote</a>
+                                <a href="#contact" class="btn-secondary">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <div class="slide-bg" style="background-image: url('/assets/images/02.jpg')"></div>
+                    <div class="slide-content">
+                        <div class="text-animation-container">
+                            <div class="animated-badge">BUILDING COMMUNITIES</div>
+                            
+                            <div class="title-line">
+                                <span class="title-word">Creating</span>
+                                <span class="title-word">Infrastructure</span>
+                            </div>
+                            <div class="title-line">
+                                <span class="title-word">That</span>
+                                <span class="title-word highlight">Empowers</span>
+                                <span class="title-word">Generations</span>
+                            </div>
+                            
+                            <div class="text-line">
+                                <span class="text-word">We're</span>
+                                <span class="text-word">committed</span>
+                                <span class="text-word">to</span>
+                                <span class="text-word">eco-friendly</span>
+                            </div>
+                            <div class="text-line">
+                                <span class="text-word">construction</span>
+                                <span class="text-word">practices</span>
+                                <span class="text-word">that</span>
+                                <span class="text-word">create</span>
+                            </div>
+                            <div class="text-line">
+                                <span class="text-word">lasting</span>
+                                <span class="text-word">value</span>
+                                <span class="text-word">for</span>
+                                <span class="text-word">all</span>
+                                <span class="text-word">South</span>
+                                <span class="text-word">Africans.</span>
+                            </div>
+                            
+                            <div class="cta-container">
+                                <a href="#contact" class="btn-primary">Get a Quote</a>
+                                <a href="#contact" class="btn-secondary">More Info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Swiper Navigation -->
+            <div hidden class="swiper-button-next"></div>
+            <div hidden class="swiper-button-prev"></div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </section>
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="form-section">
+        <div class="container">
+            <div class="section-header">
+                <h6 class="section-subtitle">GET IN TOUCH</h6>
+                <h2 class="section-title">Start Your Construction Project</h2>
+                <p>Complete the form below and our team will contact you within 24 hours</p>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-7">
+                    <div id="formSuccess" class="alert alert-success d-none" role="alert">
+                        <i class="fas fa-check-circle me-2"></i>
+                        <strong>Success!</strong> Your project request has been prepared. Please check your email client to send the message.
+                    </div>
+                    
+                    <div id="formError" class="alert alert-danger d-none" role="alert">
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        <strong>Error!</strong> Please fill in all required fields correctly.
+                    </div>
+                    
+                    <div class="contact-form-container">
+                        <form id="customerForm" class="needs-validation" novalidate>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="firstName"><i class="fas fa-user"></i>First Name *</label>
+                                    <input type="text" class="form-control" id="firstName" name="firstName" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid first name.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="lastName"><i class="fas fa-user"></i>Last Name *</label>
+                                    <input type="text" class="form-control" id="lastName" name="lastName" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid last name.
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="form-label" for="email"><i class="fas fa-envelope"></i>Email Address *</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <div class="valid-feedback">
+                                        Valid email address!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid email address.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label" for="phone"><i class="fas fa-phone"></i>Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                    <div class="valid-feedback">
+                                        Valid phone number!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please provide a valid phone number (minimum 10 digits).
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label" for="company"><i class="fas fa-building"></i>Company (Optional)</label>
+                                <input type="text" class="form-control" id="company" name="company">
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label class="form-label" for="projectType"><i class="fas fa-project-diagram"></i>Project Type *</label>
+                                <select class="form-control" id="projectType" name="projectType" required>
+                                    <option value="">Select project type</option>
+                                    <option value="Residential Construction">Residential Construction</option>
+                                    <option value="Commercial Projects">Commercial Projects</option>
+                                    <option value="Industrial Construction">Industrial Construction</option>
+                                    <option value="Infrastructure Development">Infrastructure Development</option>
+                                    <option value="Renovations & Upgrades">Renovations & Upgrades</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                                <div class="valid-feedback">
+                                    Good choice!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please select a project type.
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label class="form-label" for="description"><i class="fas fa-file-alt"></i>Project Description *</label>
+                                <textarea class="form-control" id="description" name="description" rows="4" required minlength="20" placeholder="Tell us about your project..."></textarea>
+                                <div class="valid-feedback">
+                                    Great description!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Please provide a detailed project description (minimum 20 characters).
+                                </div>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <i class="fas fa-paper-plane me-2"></i>Submit Request
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="col-lg-5">
+                    <div class="contact-info">
+                        <div class="info-card">
+                            <h4 class="info-card-title"><i class="fas fa-map-marker-alt"></i>Corporate Head Office</h4>
+                            <p class="info-card-text">153 Panorama Road, Roolhuiskraal Ext 6<br>Centurion 0157</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h4 class="info-card-title"><i class="fas fa-industry"></i>Eastern Cape Factory</h4>
+                            <p class="info-card-text">1 Barnes Rd, Butterworth<br>Eastern Cape 4960</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <h4 class="info-card-title"><i class="fas fa-phone"></i>Contact Details</h4>
+                            <p class="info-card-text">
+                                Tel: 012 665 0496<br>
+                                Fax: 086695675<br>
+                                Email: info@buildb.co.za<br>
+                                Website: www.bahumib.co.za
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <div class="footer-brand mb-3" style=" filter: brightness(0) invert(1);">
+                    <img src="/assets/images/logo.png" alt="Bahumi Build Logo" class="footer-logo">
+                </div>
+                <p class="footer-description mb-4">
+                    South Africa's trusted construction partner, delivering innovative and sustainable building solutions since 2005.
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="col-lg-3 col-md-4 mb-4 mb-md-0">
+                <h5 class="footer-heading">Contact Info</h5>
+                <div class="footer-contact">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Centurion, South Africa</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>012 665 0496</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>info@buildb.zo.za</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <span>www.bahumib.co.za</span>
+                    </div>
+                </div>
+            </div>
+
+           
+        
+        <!-- Copyright -->
+        <div class="copyright mt-5 pt-4">
+            <p class="mb-0">&copy; 2026 Bahumi Build. All rights reserved. | Proudly South African</p>
+            <p class="mb-0 text-sm">Registered with CIDB & NHBRC</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Initialize Swiper
+        const swiper = new Swiper('.home-slider', {
+            direction: 'horizontal',
+            loop: true,
+            speed: 1000,
+            autoplay: {
+                delay: 7000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            },
+            on: {
+                init: function() {
+                    animateSlideContent(this.slides[this.activeIndex]);
+                },
+                slideChangeTransitionStart: function() {
+                    // Reset animations
+                    const slides = this.slides;
+                    slides.forEach(slide => {
+                        const elements = slide.querySelectorAll('.animated-badge, .title-word, .text-word, .cta-container');
+                        elements.forEach(el => {
+                            el.style.transform = '';
+                            el.style.opacity = '0';
+                        });
+                    });
+                },
+                slideChangeTransitionEnd: function() {
+                    animateSlideContent(this.slides[this.activeIndex]);
+                }
+            }
+        });
+        
+        // text animation function
+        function animateSlideContent(slide) {
+            const badge = slide.querySelector('.animated-badge');
+            const titleWords = slide.querySelectorAll('.title-word');
+            const textWords = slide.querySelectorAll('.text-word');
+            const cta = slide.querySelector('.cta-container');
+            
+            // Animate badge
+            setTimeout(() => {
+                badge.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                badge.style.opacity = '1';
+                badge.style.transform = 'translateY(0)';
+            }, 300);
+            
+            titleWords.forEach((word, index) => {
+                setTimeout(() => {
+                    word.style.transition = 'all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                    word.style.opacity = '1';
+                    word.style.transform = 'translateY(0)';
+                    
+                    if (word.classList.contains('highlight')) {
+                        setTimeout(() => {
+                            word.style.transform = 'translateY(-10px)';
+                            setTimeout(() => {
+                                word.style.transform = 'translateY(0)';
+                            }, 100);
+                        }, 100);
+                    }
+                }, 500 + (index * 150));
+            });
+            
+            textWords.forEach((word, index) => {
+                setTimeout(() => {
+                    word.style.transition = 'all 0.5s ease-out';
+                    word.style.opacity = '1';
+                    word.style.transform = 'translateY(0)';
+                    
+                    setTimeout(() => {
+                        word.style.transform = 'translateY(-3px)';
+                        setTimeout(() => {
+                            word.style.transform = 'translateY(0)';
+                        }, 50);
+                    }, 50);
+                }, 800 + (index * 30));
+            });
+            
+            // Animate CTA
+            setTimeout(() => {
+                cta.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                cta.style.opacity = '1';
+                cta.style.transform = 'translateY(0)';
+                
+                const buttons = cta.querySelectorAll('a');
+                buttons.forEach((btn, index) => {
+                    setTimeout(() => {
+                        btn.style.transform = 'scale(1.1)';
+                        setTimeout(() => {
+                            btn.style.transform = 'scale(1)';
+                        }, 150);
+                    }, index * 100);
+                });
+            }, 1200);
+        }
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Form Validation and Email Submission
+    (function() {
+        'use strict';
+        
+        const form = document.getElementById('customerForm');
+        const formSuccess = document.getElementById('formSuccess');
+        const formError = document.getElementById('formError');
+        const submitBtn = document.getElementById('submitBtn');
+        const phoneField = document.getElementById('phone');
+        
+        formSuccess.style.display = 'none';
+        formError.style.display = 'none';
+        
+        function validatePhoneNumber(phone) {
+            const digitsOnly = phone.replace(/\D/g, '');
+            return digitsOnly.length >= 10;
+        }
+        
+        // check if all fields are valid
+        function areAllFieldsValid() {
+            // Check all required fields
+            const requiredFields = form.querySelectorAll('.form-control[required]');
+            let allValid = true;
+            
+            requiredFields.forEach(field => {
+                if (field === phoneField) {
+                    // Special handling for phone field
+                    if (!validatePhoneNumber(field.value)) {
+                        allValid = false;
+                    }
+                } else if (!field.checkValidity()) {
+                    allValid = false;
+                }
+            });
+            
+            return allValid;
+        }
+        
+        // Function to hide error message when fields are valid
+        function updateErrorMessage() {
+            if (areAllFieldsValid()) {
+                formError.style.display = 'none';
+                formError.classList.add('d-none');
+            }
+        }
+        
+        // Real-time phone validation
+        phoneField.addEventListener('input', function() {
+            // Clean up the input - allow digits, spaces, dashes, plus, parentheses
+            const cleaned = this.value.replace(/[^\d\s\-+()]/g, '');
+            if (cleaned !== this.value) {
+                this.value = cleaned;
+            }
+            
+            // Validate the phone number
+            const isValid = validatePhoneNumber(this.value);
+            
+            if (isValid) {
+                this.classList.remove('is-invalid');
+                this.classList.add('is-valid');
+                this.setCustomValidity('');
+                updateErrorMessage(); // Hide error if all fields are now valid
+            } else {
+                this.classList.remove('is-valid');
+                this.classList.add('is-invalid');
+                this.setCustomValidity('Phone number must contain at least 10 digits');
+            }
+        });
+        
+        // Real-time validation for other fields
+        const fields = form.querySelectorAll('.form-control[required]');
+        fields.forEach(field => {
+            if (field === phoneField) return; // Skip phone, we handle it separately
+            
+            field.addEventListener('input', function() {
+                if (this.checkValidity()) {
+                    this.classList.remove('is-invalid');
+                    this.classList.add('is-valid');
+                    updateErrorMessage(); // Hide error if all fields are now valid
+                } else {
+                    this.classList.remove('is-valid');
+                    this.classList.add('is-invalid');
+                }
+            });
+        });
+        
+        // Also validate on blur (when user leaves the field)
+        fields.forEach(field => {
+            field.addEventListener('blur', function() {
+                if (this === phoneField) {
+                    const isValid = validatePhoneNumber(this.value);
+                    if (isValid) {
+                        this.classList.remove('is-invalid');
+                        this.classList.add('is-valid');
+                        updateErrorMessage();
+                    }
+                } else if (this.checkValidity()) {
+                    this.classList.remove('is-invalid');
+                    this.classList.add('is-valid');
+                    updateErrorMessage();
+                }
+            });
+        });
+        
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            // Hide previous messages
+            formSuccess.classList.add('d-none');
+            formError.classList.add('d-none');
+            
+            // Validate phone separately
+            const phoneValue = phoneField.value;
+            const isPhoneValid = validatePhoneNumber(phoneValue);
+            
+            if (!isPhoneValid) {
+                phoneField.classList.add('is-invalid');
+                phoneField.classList.remove('is-valid');
+                phoneField.setCustomValidity('Phone number must contain at least 10 digits');
+            } else {
+                phoneField.classList.remove('is-invalid');
+                phoneField.classList.add('is-valid');
+                phoneField.setCustomValidity('');
+            }
+            
+            // Validate form
+            if (!form.checkValidity() || !isPhoneValid) {
+                // Mark invalid fields
+                const invalidFields = form.querySelectorAll(':invalid');
+                invalidFields.forEach(field => {
+                    field.classList.add('is-invalid');
+                    field.classList.remove('is-valid');
+                });
+                
+                // Show error message
+                formError.style.display = 'block';
+                formError.classList.remove('d-none');
+                
+                // Scroll to first error
+                invalidFields[0].scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+                
+                return;
+            }
+            
+            // Form is valid - collect data
+            const formData = {
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                company: document.getElementById('company').value || 'Not provided',
+                projectType: document.getElementById('projectType').value,
+                description: document.getElementById('description').value,
+                date: new Date().toLocaleDateString('en-ZA'),
+                time: new Date().toLocaleTimeString('en-ZA')
+            };
+            
+            // Prepare email content
+            const subject = `New Project Inquiry: ${formData.projectType}`;
+            
+            const body = `Dear Bahumi Build Team,
+
+I would like to request a quote for a construction project. Here are my details:
+
+**Contact Information:**
+- Name: ${formData.firstName} ${formData.lastName}
+- Email: ${formData.email}
+- Phone: ${formData.phone}
+- Company: ${formData.company}
+
+**Project Details:**
+- Project Type: ${formData.projectType}
+- Project Description:
+${formData.description}
+
+**Submission Details:**
+- Submitted: ${formData.date} at ${formData.time}
+- Via: Bahumi Build Website Contact Form
+
+I look forward to hearing from you soon.
+
+Best regards,
+${formData.firstName} ${formData.lastName}`;
+            
+            // Encode for mailto link
+            const encodedSubject = encodeURIComponent(subject);
+            const encodedBody = encodeURIComponent(body);
+            const mailtoLink = `mailto:info@buildb.zo.za?subject=${encodedSubject}&body=${encodedBody}`;
+            
+            // Change button to loading state
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Processing...';
+            submitBtn.disabled = true;
+            
+            // Simulate processing delay
+            setTimeout(() => {
+                // Open email client
+                window.location.href = mailtoLink;
+                
+                // Show success message
+                formSuccess.style.display = 'block';
+                formSuccess.classList.remove('d-none');
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+                
+                // Optional: Reset form after success
+                // form.reset();
+                // form.classList.remove('was-validated');
+                
+                // Scroll to success message
+                formSuccess.scrollIntoView({ 
+                    behavior: 'smooth', 
+                    block: 'center' 
+                });
+                
+            }, 1500);
+            
+            // Add Bootstrap validation styling
+            form.classList.add('was-validated');
+        }, false);
+        
+        // Project description character count
+        const descriptionField = document.getElementById('description');
+        const descriptionFeedback = descriptionField.nextElementSibling;
+        
+        descriptionField.addEventListener('input', function() {
+            const charCount = this.value.length;
+            const minLength = 20;
+            
+            if (charCount >= minLength) {
+                descriptionFeedback.textContent = `Great description! (${charCount} characters)`;
+                updateErrorMessage(); // Hide error if all fields are now valid
+            } else {
+                const remaining = minLength - charCount;
+                descriptionFeedback.textContent = `Please add ${remaining} more characters (minimum ${minLength})`;
+            }
+        });
+    })();
+    
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    // Improved mobile adjustment function - maintaining left alignment
+function adjustForMobile() {
+    const isMobile = window.innerWidth <= 768;
+    const isSmallMobile = window.innerWidth <= 576;
+    
+    const slides = document.querySelectorAll('.swiper-slide');
+    
+    slides.forEach(slide => {
+        const textLines = slide.querySelectorAll('.text-line');
+        const titleLines = slide.querySelectorAll('.title-line');
+        
+        if (isMobile) {
+            // Show only first 3-4 text lines on mobile (depending on screen size)
+            const linesToShow = isSmallMobile ? 3 : 4;
+            textLines.forEach((line, index) => {
+                line.style.display = index < linesToShow ? 'block' : 'none';
+            });
+            
+            // Keep left alignment, just ensure words don't overflow
+            titleLines.forEach(line => {
+                const words = line.querySelectorAll('.title-word');
+                if (words.length > 4) {
+                    // Allow natural wrapping but keep left aligned
+                    line.style.whiteSpace = 'normal';
+                    line.style.wordBreak = 'break-word';
+                }
+            });
+            
+            // Adjust button container for mobile - keep left aligned
+            const ctaContainer = slide.querySelector('.cta-container');
+            if (ctaContainer && isSmallMobile) {
+                ctaContainer.style.flexDirection = 'column';
+                ctaContainer.style.alignItems = 'flex-start';
+            }
+        } else {
+            // Reset for desktop
+            textLines.forEach(line => {
+                line.style.display = 'block';
+            });
+            
+            titleLines.forEach(line => {
+                line.style.whiteSpace = 'normal';
+            });
+            
+            const ctaContainer = slide.querySelector('.cta-container');
+            if (ctaContainer) {
+                ctaContainer.style.flexDirection = 'row';
+                ctaContainer.style.alignItems = 'center';
+            }
+        }
+    });
+}
+
+// Initialize and listen for resize
+window.addEventListener('load', adjustForMobile);
+window.addEventListener('resize', adjustForMobile);
+
+// Also call after Swiper initialization to ensure proper layout
+swiper.on('init', adjustForMobile);
+    </script>
+</body>
+
+</html>
